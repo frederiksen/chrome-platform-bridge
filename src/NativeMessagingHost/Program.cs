@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace NativeMessagingHost
 {
@@ -6,7 +8,34 @@ namespace NativeMessagingHost
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                var nativeMessagingCommunication = new NativeMessagingTransport();
+                nativeMessagingCommunication.OnInput += async (s, a) =>
+                {
+                    var definition = new { id = "" };
+                    var obj = JsonConvert.DeserializeAnonymousType(a.Text, definition);
+                    string result = await Task.Run(async () => 
+                    { 
+                        await Task.Delay(2500);
+                        return Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                        //var osNameAndVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+                        //return osNameAndVersion; 
+                    });
+
+                    var newObj = new { obj.id, Result = result, Time = DateTime.UtcNow };
+                    string json = JsonConvert.SerializeObject(newObj, Formatting.Indented);
+                    nativeMessagingCommunication.Output(json);
+                };
+
+                nativeMessagingCommunication.StartListener();
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
