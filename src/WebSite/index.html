@@ -77,8 +77,13 @@
         <div class="mt-2 card">
             <div class="card-header">C#</div>                    
             <div class="card-body">
-                <p class="card-text">TODO</p>
-                <p class="card-text">TODO</p>
+                <p class="card-text">var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);</p>
+                <p class="card-text">var fullPath = Path.Combine(folderPath, Guid.NewGuid().ToString());</p>
+                <p class="card-text">using (var outputFile = new StreamWriter(fullPath))</p>
+                <p class="card-text">{</p>
+                <p class="card-text">  await outputFile.WriteLineAsync(text);</p>
+                <p class="card-text">}</p>
+                <p class="card-text">return fullPath;</p>
             </div>
         </div>
 

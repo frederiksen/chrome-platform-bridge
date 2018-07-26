@@ -59,6 +59,9 @@ class ChromePlatformBridge {
       "*");
 
     var result = await getResult(id, timeoutMS);
+    if (JSON.parse(result).Error) {
+      throw Error(JSON.parse(result).Error);
+    }
     return JSON.parse(result).Result;
   }
 }

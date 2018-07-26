@@ -8,36 +8,39 @@ namespace NativeMessagingHost
     {
         static void Main(string[] args)
         {
-            try
+            var nativeMessagingCommunication = new NativeMessagingTransport();
+            nativeMessagingCommunication.OnInput += async (s, a) =>
             {
-                var nativeMessagingCommunication = new NativeMessagingTransport();
-                nativeMessagingCommunication.OnInput += async (s, a) =>
+                var definition = new { id = "", method = "" };
+                var obj = JsonConvert.DeserializeAnonymousType(a.Text, definition);
+                object result = null;
+                try
                 {
-                    var definition = new { id = "", method = "" };
-                    var obj = JsonConvert.DeserializeAnonymousType(a.Text, definition);
-                    string result = await Task.Run(async () => 
+                    result = await Task.Run(async () => 
                     { 
                         if (obj.method == "example1")
                         {
-                            var osNameAndVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
-                            return osNameAndVersion; 
+                            return ExampleClass.Example1();
                         }
-//                        await Task.Delay(2500);
-                        return Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        if (obj.method == "example2")
+                        {
+                            return await ExampleClass.Example2("Hello world...");
+                        }
+                        throw new Exception("Unknown method");
                     });
-
-                    var newObj = new { obj.id, Result = result /*, Time = DateTime.UtcNow*/ };
-                    string json = JsonConvert.SerializeObject(newObj, Formatting.Indented);
-                    nativeMessagingCommunication.Output(json);
-                };
-
-                nativeMessagingCommunication.StartListener();
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+                }
+                catch (System.Exception exception)
+                {
+                    // TODO: Report the expcetion to the sender
+                    //throw;
+                    string errorJson = JsonConvert.SerializeObject(new { obj.id, Error = exception.Message });
+                    nativeMessagingCommunication.Output(errorJson);
+                    return;
+                }
+                string json = JsonConvert.SerializeObject(new { obj.id, Result = result });
+                nativeMessagingCommunication.Output(json);
+            };
+            nativeMessagingCommunication.StartListener();
         }
     }
 }
