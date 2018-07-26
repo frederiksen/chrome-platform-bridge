@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Chrome Platform Bridge Demo App</title>
+    <meta name="description" content="---">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="mt-2 container">
+        <div class="alert alert-warning" role="alert">
+            Supported systems: A Google Chrome browser on Windows, macOS or Linux.
+        </div>
+        <section>
+            <h1>Chrome Platform Bridge Demo App</h1>
+            <p>This demonstrates bridging JavaScript to the native platform using cross-platform technologies. To get detailed informations about the full stack: <a href='https://github.com/frederiksen/chrome-platform-bridge'>https://github.com/frederiksen/chrome-platform-bridge</a></a></p>     
+        </section>
+
+        <section>
+            <h4>Preflight check</h4>
+            <p>Checks if the required prerequisites has been setup</p>
+            <div class="mt-2">
+                <button id="preflight-check-btn" type="button" class="btn btn-primary">System check</button>
+            </div>            
+            <div id="progress" class="progress" style="display:none">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div id="system-ready-alert" class="alert alert-success" role="alert" style="display:none">
+                System ready. You can continue...
+            </div>              
+            <div id="system-not-ready-alert" class="alert alert-danger" role="alert" style="display:none">
+                <p>1) Add this Web Extension from the Chrome Store: <a href='https://chrome.google.com/webstore/detail/chrome-platform-bridge/cbfkjbjjmhgmlalmjpmfjpeekkkjneia' target="_blank">Chrome Platform Bridge</a></p>
+                <p>2) Install this: <a href='https://github.com/frederiksen/chrome-platform-bridge/releases' target="_blank">Platform demo</a></p>
+            </div>              
+        </section>
+
+        <h4>Example 1:</h4>
+        <p>Get OS name and version</p>
+
+        <div class="mt-2 card">
+            <div class="card-header">JavaScript</div>
+            <div class="card-body">
+                <p class="card-text">var platformBridge = new ChromePlatformBridge();</p>
+                <p class="card-text">var result = await platformBridge.invoke({method:"example1"});</p>
+            </div>
+        </div>
+
+        <div class="mt-2 card">
+            <div class="card-header">C#</div>                    
+            <div class="card-body">
+                <p class="card-text">var osNameAndVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;</p>
+                <p class="card-text">return osNameAndVersion; </p>
+            </div>
+        </div>
+  
+        <div class="mt-2">
+            <button id="testbtn" type="button" class="btn btn-primary">Invoke platform method</button>
+        </div>
+
+              <br/>
+              <p id="result">result</p>
+              
+
+        <h4>Example 2:</h4>
+        <p>Create a new file on the desktop</p>
+
+        <div class="mt-2 card">
+            <div class="card-header">JavaScript</div>
+            <div class="card-body">
+                <p class="card-text">var platformBridge = new ChromePlatformBridge();</p>
+                <p class="card-text">var result = await platformBridge.invoke({method:"example2", text:"Message from the Chrome browser: Hello world"});</p>
+            </div>
+        </div>
+
+        <div class="mt-2 card">
+            <div class="card-header">C#</div>                    
+            <div class="card-body">
+                <p class="card-text">TODO</p>
+                <p class="card-text">TODO</p>
+            </div>
+        </div>
+
+        <button id="testbtn2" type="button" class="btn btn-primary">Invoke native method: Example2</button>
+        <br/>
+        <p id="result2">result</p>
+
+      </div>
+
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+      <script src="chrome-platform-bridge-0.0.1.js"></script>
+      <script src="scripts.js"></script>
+</body>
+</html>
