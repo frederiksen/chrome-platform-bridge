@@ -41,17 +41,21 @@
 
         <div class="mt-2 card">
             <div class="card-header">JavaScript</div>
-            <div class="card-body">
-                <p class="card-text">var platformBridge = new ChromePlatformBridge();</p>
-                <p class="card-text">var result = await platformBridge.invoke({method:"example1"});</p>
+            <div class="card-body" style="background-color:darkslategrey">
+                <p class="card-text" style="color:whitesmoke">
+                    var platformBridge = new ChromePlatformBridge();<br>
+                    var result = await platformBridge.invoke({method:"example1"});
+                </p>
             </div>
         </div>
 
         <div class="mt-2 card">
             <div class="card-header">C#</div>                    
-            <div class="card-body">
-                <p class="card-text">var osNameAndVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;</p>
-                <p class="card-text">return osNameAndVersion; </p>
+            <div class="card-body" style="background-color:darkslategrey">
+                <p class="card-text" style="color:whitesmoke">
+                    var osNameAndVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;<br>
+                    return osNameAndVersion;
+                </p>
             </div>
         </div>
   
@@ -68,22 +72,26 @@
 
         <div class="mt-2 card">
             <div class="card-header">JavaScript</div>
-            <div class="card-body">
-                <p class="card-text">var platformBridge = new ChromePlatformBridge();</p>
-                <p class="card-text">var result = await platformBridge.invoke({method:"example2", text:"Message from the Chrome browser: Hello world"});</p>
+            <div class="card-body" style="background-color:darkslategrey">
+                <p class="card-text" style="color:whitesmoke">
+                    var platformBridge = new ChromePlatformBridge();<br>
+                    var result = await platformBridge.invoke({method:"example2", text:"Message from the Chrome browser: Hello world"});
+                </p>
             </div>
         </div>
 
         <div class="mt-2 card">
-            <div class="card-header">C#</div>                    
-            <div class="card-body">
-                <p class="card-text">var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);</p>
-                <p class="card-text">var fullPath = Path.Combine(folderPath, Guid.NewGuid().ToString());</p>
-                <p class="card-text">using (var outputFile = new StreamWriter(fullPath))</p>
-                <p class="card-text">{</p>
-                <p class="card-text">  await outputFile.WriteLineAsync(text);</p>
-                <p class="card-text">}</p>
-                <p class="card-text">return fullPath;</p>
+            <div class="card-header">C#</div>
+            <div class="card-body" style="background-color:darkslategrey">
+                <p class="card-text" style="color:whitesmoke">
+                    var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);<br>
+                    var fullPath = Path.Combine(folderPath, Guid.NewGuid().ToString());<br>
+                    using (var outputFile = new StreamWriter(fullPath))<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;await outputFile.WriteLineAsync(text);<br>
+                    }<br>
+                    return fullPath;
+                </p>
             </div>
         </div>
 
