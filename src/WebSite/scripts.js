@@ -1,15 +1,12 @@
 // DOM loaded
 (async function() {
-
-
     $("#preflight-check-btn").click(async function () {
         try {
-            $("#progress").show();
+            $("#check-spinner").show();
             $("#preflight-check-btn").prop('disabled', true);
             $("#system-ready-alert").hide();
-            $("#system-not-ready-alert").hide();
-        
-            var bridge = new ChromePlatformBridge();
+            $("#system-not-ready-alert").hide();        
+            const bridge = new ChromePlatformBridge();
             var result = await bridge.invoke({method:"example1"});
             $("#system-ready-alert").show();
         }
@@ -17,17 +14,14 @@
             $("#system-not-ready-alert").show();
         }
         finally {
-            $("#progress").hide();
+            $("#check-spinner").hide();
             $("#preflight-check-btn").prop('disabled', false);
         }
     });
-
-
     $("#testbtn").click(async function () {
         try {
             $("#testbtn").prop('disabled', true);
-
-            var bridge = new ChromePlatformBridge();
+            const bridge = new ChromePlatformBridge();
             var result = await bridge.invoke({method:"example1"});
             $("#result").text(result);    
         }
@@ -41,7 +35,7 @@
 
     $("#testbtn2").click(async function () {
         try {
-            var bridge = new ChromePlatformBridge();
+            const bridge = new ChromePlatformBridge();
             var result = await bridge.invoke({method:"example2"});
             $("#result2").text(result);
         }

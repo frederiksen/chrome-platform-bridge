@@ -24,15 +24,14 @@
             <div class="mt-2">
                 <button id="preflight-check-btn" type="button" class="btn btn-primary">System check</button>
             </div>            
-            <div id="progress" class="progress" style="display:none">
-                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div id="system-ready-alert" class="alert alert-success" role="alert" style="display:none">
+            <img id="check-spinner" src="Spinner-1s-30px.gif" style="display:none">
+            </img>
+            <div id="system-ready-alert" class="mt-2 alert alert-success" role="alert" style="display:none">
                 System ready. You can continue...
             </div>              
-            <div id="system-not-ready-alert" class="alert alert-danger" role="alert" style="display:none">
-                <p>1) Add this Web Extension from the Chrome Store: <a href='https://chrome.google.com/webstore/detail/chrome-platform-bridge/cbfkjbjjmhgmlalmjpmfjpeekkkjneia' target="_blank">Chrome Platform Bridge</a></p>
-                <p>2) Install this: <a href='https://github.com/frederiksen/chrome-platform-bridge/releases' target="_blank">Platform demo</a></p>
+            <div id="system-not-ready-alert" class="mt-2 alert alert-danger" role="alert" style="display:none">
+                1) Add this Web Extension from the Chrome Store: <a href='https://chrome.google.com/webstore/detail/chrome-platform-bridge/cbfkjbjjmhgmlalmjpmfjpeekkkjneia' target="_blank">Chrome Platform Bridge</a><br>
+                2) Install this: <a href='https://github.com/frederiksen/chrome-platform-bridge/releases' target="_blank">Platform demo</a>
             </div>              
         </section>
 
@@ -43,7 +42,7 @@
             <div class="card-header">JavaScript</div>
             <div class="card-body" style="background-color:darkslategrey">
                 <p class="card-text" style="color:whitesmoke">
-                    var platformBridge = new ChromePlatformBridge();<br>
+                    const platformBridge = new ChromePlatformBridge();<br>
                     var result = await platformBridge.invoke({method:"example1"});
                 </p>
             </div>
@@ -74,7 +73,7 @@
             <div class="card-header">JavaScript</div>
             <div class="card-body" style="background-color:darkslategrey">
                 <p class="card-text" style="color:whitesmoke">
-                    var platformBridge = new ChromePlatformBridge();<br>
+                    const platformBridge = new ChromePlatformBridge();<br>
                     var result = await platformBridge.invoke({method:"example2", text:"Message from the Chrome browser: Hello world"});
                 </p>
             </div>
