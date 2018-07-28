@@ -13,3 +13,6 @@ http://frederiksen.github.io/chrome-platform-bridge/
 * Use modern technologies
 * Cross-platform - this project targes Windows, macOS and Linux
 * Ease-of-use - non-nerds must be able to setup a running system within minutes
+
+## Technology stack
+TODO
