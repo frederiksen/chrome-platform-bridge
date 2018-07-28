@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="*"
+      UpgradeCode="{82a613a8-cfb1-4cd0-a0d9-abaaf4b33b39}"
+      Version="0.0.1.0"
+      Language="1033"
+      Name="Chrome Platform Bridge Demo App"
+      Manufacturer="https://github.com/frederiksen/chrome-platform-bridge">
+        <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine"/>
+        <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <Media Id="1" Cabinet="cabinet.cab" EmbedCab="yes" CompressionLevel="high"/>
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder">
+                <Directory Id="INSTALLFOLDER" Name="Chrome Platform Bridge Demo App">
+                    <Component Id="com.github.frederiksen.chromeplatformbridge.json" Guid="846fced9-5b4a-43c5-b498-b570b8869e85">
+                        <File Id="com.github.frederiksen.chromeplatformbridge.json" Name="com.github.frederiksen.chromeplatformbridge.json" Source="com.github.frederiksen.chromeplatformbridge.json" Vital="yes" DiskId="1" />
+                    </Component>
+                    <Component Id="WebExtensionRegistry32" Guid="DD22EF66-E085-4F26-9C14-83F11C747C14" Win64='no'>
+                        <RegistryValue Root="HKLM"
+                                        Action="write"
+                                        Key="Software\Google\Chrome\NativeMessagingHosts\com.github.frederiksen.chromeplatformbridge"
+                                        Value="[INSTALLFOLDER]com.github.frederiksen.chromeplatformbridge.json"
+                                        Type="string" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="MainApplication" Title="Main Application" Level="1">        
+            <ComponentRef Id="com.github.frederiksen.chromeplatformbridge.json" />
+            <ComponentRef Id="WebExtensionRegistry32" />
+            <ComponentGroupRef Id="NativeMessagingHostGroup" />
+        </Feature>
+    </Product>
+</Wix>
