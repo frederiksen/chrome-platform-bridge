@@ -4,7 +4,7 @@
 This project demonstrates a bridge from JavaScript to the platform hosting the browser.
 
 ## What can it be used for?
-The bridging functionallity can be used to mix a typically web-app and local resources. The resources could be: the file system or some hardware.
+The bridging functionallity can be used to mix a typically web-app and local resources. The resources could be: the file system, a hardware device or some legacy software.
 
 ## Live demo
 http://frederiksen.github.io/chrome-platform-bridge/
