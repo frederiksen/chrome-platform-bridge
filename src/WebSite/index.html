@@ -11,7 +11,8 @@
 
     <div class="mt-2 container">
         <div class="alert alert-warning" role="alert">
-            Supported systems: A Google Chrome browser on Windows, macOS or Linux.
+            <h4 class="alert-heading">Supported systems</h4>
+            <p>A Google Chrome browser on Windows, macOS or Linux.</p>
         </div>
         <section>
             <h1>Chrome Platform Bridge Demo App</h1>
@@ -22,26 +23,32 @@
             <h4>Preflight check</h4>
             <p>Checks if the required prerequisites has been setup</p>
             <div class="mt-2">
-                <button id="preflight-check-btn" type="button" class="btn btn-primary">System check</button>
+                <button id="preflight-check-btn" type="button" class="btn btn-primary">System Check</button>
+                <img id="check-spinner" src="Spinner-1s-30px.gif" style="display:none">
             </div>            
-            <img id="check-spinner" src="Spinner-1s-30px.gif" style="display:none">
             </img>
             <div id="system-ready-alert" class="mt-2 alert alert-success" role="alert" style="display:none">
-                System ready. You can continue...
+                <h4 class="alert-heading">System ready</h4>
+                <p>You can continue...</p>
             </div>              
             <div id="system-not-ready-alert" class="mt-2 alert alert-danger" role="alert" style="display:none">
-                1) Add this Web Extension from the Chrome Store: <a href='https://chrome.google.com/webstore/detail/chrome-platform-bridge/cbfkjbjjmhgmlalmjpmfjpeekkkjneia' target="_blank">Chrome Platform Bridge</a><br>
-                2) Install this: <a href='https://github.com/frederiksen/chrome-platform-bridge/releases' target="_blank">Platform demo</a>
+                <h4 class="alert-heading">Something is missing</h4>
+                <p>
+                    1) Add this Web Extension from the Chrome Store: <a class="alert-link" href='https://chrome.google.com/webstore/detail/chrome-platform-bridge/cbfkjbjjmhgmlalmjpmfjpeekkkjneia' target="_blank">Chrome Platform Bridge</a><br>
+                2) Install this: <a class="alert-link" href='https://github.com/frederiksen/chrome-platform-bridge/releases' target="_blank">Platform demo</a>
+            </p>
             </div>              
         </section>
 
-        <h4>Example 1:</h4>
+        <hr class="mt-2">
+
+        <h4 class="mt-2">Example 1:</h4>
         <p>Get OS name and version</p>
 
         <div class="mt-2 card">
             <div class="card-header">JavaScript</div>
             <div class="card-body" style="background-color:darkslategrey">
-                <p class="card-text" style="color:whitesmoke">
+                <p class="text-monospace card-text" style="color:whitesmoke">
                     const platformBridge = new ChromePlatformBridge();<br>
                     var result = await platformBridge.invoke({method:"example1"});
                 </p>
@@ -51,20 +58,20 @@
         <div class="mt-2 card">
             <div class="card-header">C#</div>                    
             <div class="card-body" style="background-color:darkslategrey">
-                <p class="card-text" style="color:whitesmoke">
+                <p class="text-monospace card-text" style="color:whitesmoke">
                     var osNameAndVersion = System.Runtime.InteropServices.RuntimeInformation.OSDescription;<br>
                     return osNameAndVersion;
                 </p>
             </div>
         </div>
   
-        <div class="mt-2">
-            <button id="testbtn" type="button" class="btn btn-primary">Invoke platform method</button>
-        </div>
+        <button id="invoke-example1-btn" type="button" class="mt-2 btn btn-primary">Invoke Platform Bridge</button>
+        <img id="example1-spinner" src="Spinner-1s-30px.gif" style="display:none">
 
-              <br/>
-              <p id="result">result</p>
+        <h5 class="mt-2">Return value</h5>
+        <p class="mt-2" id="example1-result">-</p>
               
+        <hr class="mt-2">
 
         <h4>Example 2:</h4>
         <p>Create a new file on the desktop</p>
@@ -72,7 +79,7 @@
         <div class="mt-2 card">
             <div class="card-header">JavaScript</div>
             <div class="card-body" style="background-color:darkslategrey">
-                <p class="card-text" style="color:whitesmoke">
+                <p class="text-monospace card-text" style="color:whitesmoke">
                     const platformBridge = new ChromePlatformBridge();<br>
                     var result = await platformBridge.invoke({method:"example2", text:"Message from the Chrome browser: Hello world"});
                 </p>
@@ -82,7 +89,7 @@
         <div class="mt-2 card">
             <div class="card-header">C#</div>
             <div class="card-body" style="background-color:darkslategrey">
-                <p class="card-text" style="color:whitesmoke">
+                <p class="text-monospace card-text" style="color:whitesmoke">
                     var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);<br>
                     var fullPath = Path.Combine(folderPath, Guid.NewGuid().ToString());<br>
                     using (var outputFile = new StreamWriter(fullPath))<br>
@@ -94,9 +101,19 @@
             </div>
         </div>
 
-        <button id="testbtn2" type="button" class="btn btn-primary">Invoke native method: Example2</button>
-        <br/>
-        <p id="result2">result</p>
+        <div class="mt-2 input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text" id="btnGroupAddon2">text</div>
+            </div>
+            <input type="text" class="form-control" placeholder="Enter a text here" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+        </div>
+
+        <button id="invoke-example2-btn" type="button" class="mt-2 btn btn-primary">Invoke Platform Bridge</button>
+        <img id="example2-spinner" src="Spinner-1s-30px.gif" style="display:none">
+
+        <h5 class="mt-2">Return value</h5>
+        <p class="mt-2" id="example2-result">-</p>
+
 
       </div>
 

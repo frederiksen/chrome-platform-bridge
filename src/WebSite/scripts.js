@@ -18,29 +18,39 @@
             $("#preflight-check-btn").prop('disabled', false);
         }
     });
-    $("#testbtn").click(async function () {
+    $("#invoke-example1-btn").click(async function () {
         try {
-            $("#testbtn").prop('disabled', true);
+            $("#invoke-example1-btn").prop('disabled', true);
+            $("#example1-result").text("-");    
+            $("#example1-spinner").show();    
             const bridge = new ChromePlatformBridge();
             var result = await bridge.invoke({method:"example1"});
-            $("#result").text(result);    
+            $("#example1-result").text(result);    
         }
         catch(err) {
             alert(err);
         }
         finally {
-            $("#testbtn").prop('disabled', false);
+            $("#invoke-example1-btn").prop('disabled', false);
+            $("#example1-spinner").hide();    
         }
     });
 
-    $("#testbtn2").click(async function () {
+    $("#invoke-example2-btn").click(async function () {
         try {
+            $("#invoke-example2-btn").prop('disabled', true);
+            $("#example2-result").text("-");    
+            $("#example2-spinner").show();    
             const bridge = new ChromePlatformBridge();
             var result = await bridge.invoke({method:"example2"});
-            $("#result2").text(result);
+            $("#example2-result").text(result);
         }
         catch(err) {
             alert(err);
+        }
+        finally {
+            $("#invoke-example2-btn").prop('disabled', false);
+            $("#example2-spinner").hide();    
         }
 
     });

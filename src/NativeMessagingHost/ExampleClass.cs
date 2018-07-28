@@ -20,7 +20,7 @@ namespace NativeMessagingHost
             {
                 await outputFile.WriteLineAsync(text);
             }
-            throw new Exception("Something didn't work out");
+//            throw new Exception("Something didn't work out");
             return fullPath;
         }
     }
