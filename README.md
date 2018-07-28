@@ -8,3 +8,8 @@ The bridging functionallity can be used to mix a typically web-app and local res
 
 ## Live demo
 http://frederiksen.github.io/chrome-platform-bridge/
+
+## Project goals and objectives
+* Use modern technologies
+* Cross-platform - this project targes Windows, macOS and Linux
+* Ease-of-use - non-nerds must be able to setup a running system within minutes
