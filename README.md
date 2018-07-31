@@ -1,6 +1,8 @@
 # Chrome Platform Bridge
 ![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/macOS.png "Demo")
 
+![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/Windows.gif "Demo")
+
 ## What is this project about?
 This project demonstrates a bridge from JavaScript to the platform hosting the browser.
 
