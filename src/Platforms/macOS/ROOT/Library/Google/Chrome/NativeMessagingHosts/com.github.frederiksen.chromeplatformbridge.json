@@ -1,0 +1,9 @@
+{
+  "name": "com.github.frederiksen.chromeplatformbridge",
+  "description": "Chrome Platform Bridge",
+  "path": "/Library/Google/Chrome/NativeMessagingHosts/chrome-platform-bridge/NativeMessagingHost",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://cbfkjbjjmhgmlalmjpmfjpeekkkjneia/"
+  ]
+}
