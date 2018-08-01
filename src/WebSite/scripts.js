@@ -1,21 +1,40 @@
-// DOM loaded
+/*
+MIT License
+
+Copyright (c) 2018 Morten Frederiksen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 (async function() {
     $("#preflight-check-btn").click(async function () {
-        try {
-            $("#check-spinner").show();
-            $("#preflight-check-btn").prop('disabled', true);
-            $("#system-ready-alert").hide();
-            $("#system-not-ready-alert").hide();        
-            const bridge = new ChromePlatformBridge();
-            var result = await bridge.invoke({method:"example1"});
+        $("#check-spinner").show();
+        $("#preflight-check-btn").prop('disabled', true);
+        $("#system-ready-alert").hide();
+        $("#system-not-ready-alert").hide();        
+        const bridge = new ChromePlatformBridge();
+        const result = await bridge.systemCheck();
+        $("#check-spinner").hide();
+        $("#preflight-check-btn").prop('disabled', false);
+        if (result===true) {
             $("#system-ready-alert").show();
-        }
-        catch(err) {
+        } else {
             $("#system-not-ready-alert").show();
-        }
-        finally {
-            $("#check-spinner").hide();
-            $("#preflight-check-btn").prop('disabled', false);
         }
     });
     $("#invoke-example1-btn").click(async function () {
@@ -35,7 +54,6 @@
             $("#example1-spinner").hide();    
         }
     });
-
     $("#invoke-example2-btn").click(async function () {
         try {
             $("#invoke-example2-btn").prop('disabled', true);
@@ -54,6 +72,5 @@
             $("#invoke-example2-btn").prop('disabled', false);
             $("#example2-spinner").hide();    
         }
-
     });
 })();

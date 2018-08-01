@@ -1,66 +1,78 @@
-﻿function uniqueId() {
-  return 'id-' + Math.random().toString(36).substr(2, 16);
-};
+﻿/*
+MIT License
 
-function resolveAfter2Seconds() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('resolved');
-    }, 2000);
-  });
-}
+Copyright (c) 2018 Morten Frederiksen
 
-function getResult(uniqueId, timeoutMS) {
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+function getReturnObject(uniqueId, timeoutMS) {
   return new Promise((resolve, reject) => {
-
-    var timeout = setTimeout(function(){ 
+    let timeout = setTimeout(function(){ 
       this.console.log("timeout");
       window.removeEventListener("message", y);
       reject(Error("Timeout"));
     }, timeoutMS);
-
-    var y = function (event) {
-      if (event.source == window &&
+    let y = function (event) {
+      if (event.source === window &&
         event.data.direction &&
-        event.data.direction == "chrome-platform-bridge-from-content-script" && 
-        JSON.parse(event.data.message).id == uniqueId) {
+        event.data.direction === "chrome-platform-bridge-from-content-script" && 
+        JSON.parse(event.data.message).id === uniqueId) {
           clearTimeout(timeout);
           this.console.log(event.data.message);
           window.removeEventListener("message", y);
-          var obj = JSON.parse(event.data.message);
+          const obj = JSON.parse(event.data.message);
           resolve(JSON.stringify(obj));
         }
       }
     window.addEventListener("message", y);
-
   });
-
 }
-
 class ChromePlatformBridge {
   constructor() {
   }
-
-  async init() {
-    await resolveAfter2Seconds();
+  uniqueId() {
+    return 'id-' + Math.random().toString(36).substr(2, 16);
+  };
+  async systemCheck() {
+    try {
+      const bridge = new ChromePlatformBridge();
+      const result = await bridge.invoke({method:"systemCheck"});
+    }
+    catch(err) {
+      return false;
+    }
     return true;
   }
-
   async invoke(obj, timeoutMS = 5000) {
-    var id = uniqueId();
+    const id = this.uniqueId();
     obj.id = id;
-
-    var t = JSON.stringify(obj)
-    console.log(t);
+    const objStringified = JSON.stringify(obj)
+    console.log(objStringified);
     window.postMessage({
         direction: "chrome-platform-bridge-from-page-script",
-        message: t
+        message: objStringified
       },
       "*");
-
-    var result = await getResult(id, timeoutMS);
-    if (JSON.parse(result).Error) {
-      throw Error(JSON.parse(result).Error);
+    const result = await getReturnObject(id, timeoutMS);
+    const err = JSON.parse(result).Error;
+    if (err) {
+      throw Error(err);
     }
     return JSON.parse(result).Result;
   }
