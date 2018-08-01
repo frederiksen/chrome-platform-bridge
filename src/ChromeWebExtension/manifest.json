@@ -6,7 +6,7 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Chrome Platform Bridge",
   "content_scripts": [
     {
