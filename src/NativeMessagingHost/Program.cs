@@ -24,15 +24,17 @@ namespace NativeMessagingHost
                         }
                         if (obj.method == "example2")
                         {
-                            return await ExampleClass.Example2("Hello world...");
+                            var parameterDefinition = new { filename = "", text = "" };
+                            var parameterObj = JsonConvert.DeserializeAnonymousType(a.Text, parameterDefinition);
+
+                            return await ExampleClass.Example2(parameterObj.filename, parameterObj.text);
                         }
                         throw new Exception("Unknown method");
                     });
                 }
                 catch (System.Exception exception)
                 {
-                    // TODO: Report the expcetion to the sender
-                    //throw;
+                    // Report the expcetion to the sender
                     string errorJson = JsonConvert.SerializeObject(new { obj.id, Error = exception.Message });
                     nativeMessagingCommunication.Output(errorJson);
                     return;

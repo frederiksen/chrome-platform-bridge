@@ -50,7 +50,7 @@
             <div class="card-body" style="background-color:darkslategrey">
                 <p class="text-monospace card-text" style="color:whitesmoke">
                     const platformBridge = new ChromePlatformBridge();<br>
-                    var result = await platformBridge.invoke({method:"example1"});
+                    const result = await platformBridge.invoke({method:"example1"});
                 </p>
             </div>
         </div>
@@ -81,7 +81,7 @@
             <div class="card-body" style="background-color:darkslategrey">
                 <p class="text-monospace card-text" style="color:whitesmoke">
                     const platformBridge = new ChromePlatformBridge();<br>
-                    var result = await platformBridge.invoke({method:"example2", text:"Message from the Chrome browser: Hello world"});
+                    const result = await platformBridge.invoke({method:"example2", filename: "text.txt", text:"Message from the Chrome browser: Hello world"});
                 </p>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <div class="card-body" style="background-color:darkslategrey">
                 <p class="text-monospace card-text" style="color:whitesmoke">
                     var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);<br>
-                    var fullPath = Path.Combine(folderPath, Guid.NewGuid().ToString());<br>
+                    var fullPath = Path.Combine(folderPath, filename);<br>
                     using (var outputFile = new StreamWriter(fullPath))<br>
                     {<br>
                     &nbsp;&nbsp;&nbsp;await outputFile.WriteLineAsync(text);<br>
@@ -103,9 +103,13 @@
 
         <div class="mt-2 input-group">
             <div class="input-group-prepend">
-                <div class="input-group-text" id="btnGroupAddon2">text</div>
+                <div class="input-group-text">filename</div>
             </div>
-            <input type="text" class="form-control" placeholder="Enter a text here" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+            <input id="filenameInput" type="text" class="form-control" placeholder="Enter a filename here" aria-label="Input group example" aria-describedby="btnGroupAddon2" value="test.txt">
+            <div class="input-group-prepend">
+                <div class="input-group-text">text</div>
+            </div>
+            <input id="textInput" type="text" class="form-control" placeholder="Enter a text here" aria-label="Input group example" aria-describedby="btnGroupAddon2" value="Hello platform world!">
         </div>
 
         <button id="invoke-example2-btn" type="button" class="mt-2 btn btn-primary">Invoke Platform Bridge</button>

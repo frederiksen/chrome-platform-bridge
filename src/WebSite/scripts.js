@@ -24,7 +24,7 @@
             $("#example1-result").text("-");    
             $("#example1-spinner").show();    
             const bridge = new ChromePlatformBridge();
-            var result = await bridge.invoke({method:"example1"});
+            const result = await bridge.invoke({method:"example1"});
             $("#example1-result").text(result);    
         }
         catch(err) {
@@ -41,8 +41,10 @@
             $("#invoke-example2-btn").prop('disabled', true);
             $("#example2-result").text("-");    
             $("#example2-spinner").show();    
+            const filenameInput = $("#filenameInput").val();
+            const textInput = $("#textInput").val();
             const bridge = new ChromePlatformBridge();
-            var result = await bridge.invoke({method:"example2"});
+            const result = await bridge.invoke({method:"example2", filename: filenameInput, text: textInput});
             $("#example2-result").text(result);
         }
         catch(err) {

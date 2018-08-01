@@ -12,15 +12,14 @@ namespace NativeMessagingHost
             return osNameAndVersion; 
         }
 
-        static public async Task<string> Example2(string text)
+        static public async Task<string> Example2(string filename, string text)
         {
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var fullPath = Path.Combine(folderPath, Guid.NewGuid().ToString());
+            var fullPath = Path.Combine(folderPath, filename);
             using (var outputFile = new StreamWriter(fullPath))
             {
                 await outputFile.WriteLineAsync(text);
             }
-//            throw new Exception("Something didn't work out");
             return fullPath;
         }
     }
