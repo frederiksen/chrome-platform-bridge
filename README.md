@@ -2,7 +2,7 @@
 ## macOS screenshot
 ![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/macOS.png "Demo")
 
-## Windows screenshot
+## Windows system setup
 ![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/Windows.gif "Demo")
 
 ## What is this project about?
@@ -12,7 +12,7 @@ This project demonstrates a bridge from JavaScript to the platform hosting the b
 The bridging functionallity can be used to mix a typically web-app and local resources. The resources could be: the file system, a hardware device or some legacy software.
 
 ## Live demo
-http://frederiksen.github.io/chrome-platform-bridge/
+https://frederiksen.github.io/chrome-platform-bridge/
 
 ## Project goals and objectives
 * Use modern technologies
