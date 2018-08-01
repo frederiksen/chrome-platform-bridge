@@ -2,7 +2,7 @@
 ## macOS screenshot
 ![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/macOS.png "Demo")
 
-## Windows screenshot
+## Windows system setup
 ![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/Windows.gif "Demo")
 
 ## What is this project about?
