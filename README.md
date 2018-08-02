@@ -5,6 +5,9 @@
 ## Windows system setup
 ![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/Windows.gif "Demo")
 
+## Linux screenshot
+![Demo](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/Linux.png "Demo")
+
 ## What is this project about?
 This project demonstrates a bridge from JavaScript to the platform hosting the browser.
 
