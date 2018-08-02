@@ -12,15 +12,16 @@
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFilesFolder">
                 <Directory Id="INSTALLFOLDER" Name="Chrome Platform Bridge Demo App">
-                    <Component Id="com.github.frederiksen.chromeplatformbridge.json" Guid="846fced9-5b4a-43c5-b498-b570b8869e85">
+                    <Component Id="com.github.frederiksen.chromeplatformbridge.json" Guid="{7459ec5f-7489-435e-824a-c83f1f3f54b5}">
                         <File Id="com.github.frederiksen.chromeplatformbridge.json" Name="com.github.frederiksen.chromeplatformbridge.json" Source="com.github.frederiksen.chromeplatformbridge.json" Vital="yes" DiskId="1" />
                     </Component>
-                    <Component Id="WebExtensionRegistry32" Guid="DD22EF66-E085-4F26-9C14-83F11C747C14" Win64='no'>
-                        <RegistryValue Root="HKLM"
-                                        Action="write"
-                                        Key="Software\Google\Chrome\NativeMessagingHosts\com.github.frederiksen.chromeplatformbridge"
-                                        Value="[INSTALLFOLDER]com.github.frederiksen.chromeplatformbridge.json"
-                                        Type="string" />
+                    <Component Id="WebExtensionRegistry32" Guid="{e04885d4-2039-4103-bb78-3273fcbcfcb4}" Win64='no'>
+                        <RegistryValue 
+                            Root="HKLM"
+                            Action="write"
+                            Key="Software\Google\Chrome\NativeMessagingHosts\com.github.frederiksen.chromeplatformbridge"
+                            Value="[INSTALLFOLDER]com.github.frederiksen.chromeplatformbridge.json"
+                            Type="string" />
                     </Component>
                 </Directory>
             </Directory>
