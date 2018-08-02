@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
     <Product Id="*"
       UpgradeCode="{82a613a8-cfb1-4cd0-a0d9-abaaf4b33b39}"
-      Version="0.0.2.0"
+      Version="0.3.0.0"
       Language="1033"
       Name="Chrome Platform Bridge Demo App"
       Manufacturer="https://github.com/frederiksen/chrome-platform-bridge">
