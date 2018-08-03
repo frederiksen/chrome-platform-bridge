@@ -65,7 +65,7 @@ class ChromePlatformBridge {
   async invoke(obj, timeoutMS = 5000) {
     const id = this.uniqueId();
     obj.id=id;
-    obj.requestedHostVersion=requestedHostVersion();
+    obj.requestedHostVersion=this.requestedHostVersion();
     const objStringified = JSON.stringify(obj)
     console.log(objStringified);
     window.postMessage({
