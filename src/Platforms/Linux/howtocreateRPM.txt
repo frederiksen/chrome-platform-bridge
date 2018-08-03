@@ -1,0 +1,4 @@
+Install alian:
+sudo apt-get install alien
+Convert:
+sudo alien -r platform-bridge-demo-linux64bit.deb
