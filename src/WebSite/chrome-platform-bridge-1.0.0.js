@@ -49,6 +49,9 @@ class ChromePlatformBridge {
   uniqueId() {
     return 'id-' + Math.random().toString(36).substr(2, 16);
   };
+  requestedHostVersion() {
+    return "1.0.0";
+  }
   async systemCheck() {
     try {
       const bridge = new ChromePlatformBridge();
@@ -61,7 +64,8 @@ class ChromePlatformBridge {
   }
   async invoke(obj, timeoutMS = 5000) {
     const id = this.uniqueId();
-    obj.id = id;
+    obj.id=id;
+    obj.requestedHostVersion=requestedHostVersion();
     const objStringified = JSON.stringify(obj)
     console.log(objStringified);
     window.postMessage({

@@ -29,12 +29,14 @@ namespace NativeMessagingHost
 {
     class Program
     {
+        static string Version = "1.0.0";
+
         static void Main(string[] args)
         {
             var nativeMessagingCommunication = new NativeMessagingTransport();
             nativeMessagingCommunication.OnInput += async (s, i) =>
             {
-                var definition = new { id = "", method = "" };
+                var definition = new { id="", method="", requestedHostVersion="" };
                 var obj = JsonConvert.DeserializeAnonymousType(i.Text, definition);
                 object result = null;
                 try
@@ -44,6 +46,10 @@ namespace NativeMessagingHost
                         if (obj.method == "systemCheck")
                         {
                             return "ready";
+                        }
+                        if (obj.requestedHostVersion != Version)
+                        {
+                            throw new Exception($"Incorrect host version: {Version}");
                         }
                         if (obj.method == "example1")
                         {
