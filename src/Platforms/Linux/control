@@ -1,8 +1,8 @@
-Package: platform-bridge-demo-linux64bit
-Version: 0.5.0
+Package: platform-bridge-demo-linux
+Version: 1.0.0
 Section: web
 Priority: optional
-Architecture: all
+Architecture: amd64
 Maintainer: Morten Frederiksen
 Homepage: https://github.com/frederiksen/chrome-platform-bridge
 Description: Chrome Platform Bridge Demo
