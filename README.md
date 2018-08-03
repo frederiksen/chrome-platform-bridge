@@ -19,7 +19,7 @@ https://frederiksen.github.io/chrome-platform-bridge/
 
 ## Project goals and objectives
 * Use modern technologies
-* Cross-platform - this project targes Windows, macOS and Linux (64 bit)
+* Cross-platform - this project targes Windows, macOS and Linux
 * Ease-of-use - non-nerds must be able to setup a running system within minutes
 
 ## Technology stack
