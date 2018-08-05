@@ -21,11 +21,11 @@ https://frederiksen.github.io/chrome-platform-bridge/
 * Use modern technologies
 * Cross-platform - this project targes Windows, macOS and Linux
 * Ease-of-use - non-nerds must be able to setup a running system within minutes
-* [Keep it simple, Stupid](https://github.com/dotnet/core)
+* [Keep it simple, Stupid](https://en.wikipedia.org/wiki/KISS_principle)
 
 ## Technology stack
 * [Native Messaging](https://developer.chrome.com/apps/nativeMessaging)
-* [.NET Core](https://en.wikipedia.org/wiki/KISS_principle)
+* [.NET Core](https://github.com/dotnet/core)
 
 ### Layered architecture
 ![Layered architecture](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/Architecture.svg?sanitize=true "Layered architecture")
