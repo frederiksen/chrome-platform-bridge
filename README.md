@@ -23,4 +23,6 @@ https://frederiksen.github.io/chrome-platform-bridge/
 * Ease-of-use - non-nerds must be able to setup a running system within minutes
 
 ## Technology stack
-TODO
+
+### Layered architecture
+![Layered architecture](https://raw.githubusercontent.com/frederiksen/chrome-platform-bridge/master/documentation/Architecture.svg?sanitize=true "Layered architecture")
