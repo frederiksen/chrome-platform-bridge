@@ -24,6 +24,7 @@ https://frederiksen.github.io/chrome-platform-bridge/
 
 ## Technology stack
 [Native Messaging](https://developer.chrome.com/apps/nativeMessaging)
+
 [.NET Core](https://github.com/dotnet/core)
 
 ### Layered architecture
