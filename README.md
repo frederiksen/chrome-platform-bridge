@@ -15,7 +15,7 @@ This project demonstrates a bridge from JavaScript to the platform hosting the b
 The bridging functionallity can be used to mix a typically web-app and local resources. The resources could be: the file system, a hardware device or some legacy software.
 
 ## Live demo
-https://frederiksen.github.io/chrome-platform-bridge/
+https://frederiksen.github.io/chrome-platform-bridge/index.html
 
 ## Project goals and objectives
 * Use modern technologies
